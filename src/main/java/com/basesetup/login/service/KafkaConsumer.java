@@ -22,7 +22,6 @@ public class KafkaConsumer {
     @Transactional
     public void consume(TransactionEvent event) {
 
-        System.out.println("🔥 Received event: " + event); // ADD THIS
 
         User user = userRepository.findById(event.getUserId())
                 .orElseThrow(() -> new RuntimeException("User not found"));
@@ -35,6 +34,5 @@ public class KafkaConsumer {
 
         transactionRepository.save(t);
 
-        System.out.println("✅ Transaction saved!");
     }
 }
